@@ -1,7 +1,7 @@
 # Maintainer: Simon Hallsten <flightlessmangoyt@gmail.com>
 
 pkgname=('mangohud' 'lib32-mangohud')
-pkgver=0.6.9.1.r55.g5754ca1
+pkgver=0.6.9.1.r69.gf1b5ba3
 pkgrel=1
 pkgdesc="Vulkan and OpenGL overlay to display performance information"
 arch=('x86_64')
@@ -65,8 +65,8 @@ build() {
   sed --in-place 's#glfwSetWindowSize(window, 1280, 800);#const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());\n    glfwSetWindowMonitor(window, glfwGetPrimaryMonitor(), 0, 0, mode->width, mode->height, mode->refreshRate);#' \
   "${srcdir}/mangohud/src/app/main.cpp"
 
-  # 修正mangoapp 6800u GPU 检测
-  sed --in-place 's#if (deviceName.find("Radeon") != std::string::npos#if (deviceName.find("rembrandt") != std::string::npos\n    || deviceName.find("Radeon") != std::string::npos#' \
+  # 修正mangoapp 6800u GPU 检测  7840u
+  sed --in-place 's#if (deviceName.find("Radeon") != std::string::npos#if (deviceName.find("rembrandt") != std::string::npos\n    || deviceName.find("gfx1103_r1") != std::string::npos\n    || deviceName.find("Radeon") != std::string::npos#' \
   "${srcdir}/mangohud/src/app/main.cpp"
 
   arch-meson mangohud build64 \
