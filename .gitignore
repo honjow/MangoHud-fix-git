@@ -7,6 +7,12 @@ pkg
 mangohud*.tar.*
 lib32-mangohud*.tar.*
 
+pkgbuild*/*.zip
+pkgbuild*/*.tar.*
+pkgbuild*/src
+pkgbuild*/mangohud
+pkgbuild*/mangohud-*
+
 # Prerequisites
 *.d
 
